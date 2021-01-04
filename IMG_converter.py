@@ -17,22 +17,19 @@ for indexer, x in enumerate(arr):
     stringer = arr[indexer]
     
     #appends "greyscale_" to start of image to distinguish
-    stringer_greyscale = "greyscale_"
     
-    stringer_greyscale += stringer
+    stringer_greyscale = "greyscale_" + stringer
     
     #Remove original file extension and make it a ".png"
     splitter = '.'
-    stripped_stringer_greyscale = stringer_greyscale.split(splitter, 1)[0]
-    stripped_stringer_greyscale += ".png"
-    
+    stripped_stringer_greyscale = stringer_greyscale.split(splitter, 1)[0] + ".png"
+
     #Joins image path
     path = os.path.join("./RGB", stringer)
     img = Image.open(path).convert('LA') 
     
     #Save path for "img" variable
-    greyscale_save = "./Greyscale/"
-    greyscale_save += stripped_stringer_greyscale
+    greyscale_save = "./Greyscale/" + stripped_stringer_greyscale
     img.save(greyscale_save)
     
     #Operation complete. Close "img" variable for next loop iteration.
